@@ -1,4 +1,8 @@
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import mts.HomePage;
+import org.junit.jupiter.api.DisplayName;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -33,7 +37,10 @@ public class HomeTest {
         }
     }
 
+
     @Test(priority = 0)
+    @Description("Проверка наличия текста 'Онлайн пополнение без комиссии'")
+    @Severity(SeverityLevel.MINOR)
     public void verifyText() {
 
         WebElement webElement = homePage.getWebElement(homePage.onlinePayBlock);
@@ -41,7 +48,10 @@ public class HomeTest {
 
     }
 
+
     @Test(priority = 1)
+    @io.qameta.allure.Description("Проверка наличия логотипов 5 платежных систем")
+    @Severity(SeverityLevel.MINOR)
     public void verifyLogotype() {
 
         try {
@@ -56,7 +66,12 @@ public class HomeTest {
         }
     }
 
-  @Test(priority = 2)
+
+
+
+    @Test(priority = 2)
+    @io.qameta.allure.Description("Проверка кликабельности ссылки - 'Подробнее о сервисе'")
+    @Severity(SeverityLevel.MINOR)
     public void checkServiceLink() {
         homePage.clickAboutService();
         String actualUrl = homePage.driver.getCurrentUrl();
@@ -65,7 +80,13 @@ public class HomeTest {
         homePage.navigateBack();
     }
 
+
+    
+
+
     @Test(priority = 3)
+    @io.qameta.allure.Description("Проверка ввода полей - заполнение полей и кнопки 'Продолжить'")
+    @Severity(SeverityLevel.CRITICAL)
     public void Input () {
         homePage.enterPhone("297777777");
         homePage.enterSum("250");
@@ -73,6 +94,9 @@ public class HomeTest {
     }
 
     @Test(priority = 4)
+    @Severity(SeverityLevel.MINOR)
+    @io.qameta.allure.Description("Проверка Placeholders каждого варианта оплаты услуг:услуги связи, домашний интенет," +
+            "рассрочка, задолженность ")
     public void testPlaceHolders(){
 
         try {
@@ -89,6 +113,9 @@ public class HomeTest {
     }
 
     @Test(priority = 5)
+    @Severity(SeverityLevel.CRITICAL)
+    @io.qameta.allure.Description("Проверка окна оплаты - корректность отображения суммы, телефона и" +
+            " всех placeholders(номер карты, срок действия")
     public void checkFrame() {
 
         String sum = "250.00";
